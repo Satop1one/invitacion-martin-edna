@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martín & Edna — Nuestra Boda · 22 de Diciembre 2026</title>
+
+    <!-- Vista previa elegante para WhatsApp -->
+    <meta name="description" content="Martes 22 de diciembre de 2026 • 5:00 PM • Hotel Comfort Inn Querétaro Tecnológico. Te invitamos a celebrar nuestra boda.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Boda Martín & Edna">
+    <meta property="og:title" content="Martín & Edna — Nuestra Boda">
+    <meta property="og:description" content="Martes 22 de diciembre de 2026 • 5:00 PM • Hotel Comfort Inn Querétaro Tecnológico.">
+    <meta property="og:image" content="portada.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ivory: #FDFBF7;
+            --linen: #F6EFE6;
+            --terracotta: #A85236;
+            --terracotta-dark: #823B24;
+            --brown: #433024;
+            --brown-deep: #2B1E16;
+            --brown-soft: #6E5544;
+            --honey: #C58B32;
+            --honey-dark: #96651C;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--ivory);
+            color: var(--brown);
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.55;
+        }
+
+        .serif {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+        }
+
+        /* =========================================================
+           FONDO ANIMADO DE ONDAS SUAVES (SIN ANILLOS NI LÍNEAS)
+        ========================================================= */
+        #liquid-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* =========================================================
+           SOBRE INTERACTIVO DE APERTURA
+        ========================================================= */
+        #envelope-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: rgba(253, 251, 247, 0.68);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            transition: opacity 0.9s ease, transform 0.9s ease, visibility 0.9s;
+        }
+
+        #envelope-screen.opened {
+            opacity: 0;
+            transform: scale(1.06);
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .envelope-box {
+            position: relative;
+            width: min(350px, 90vw);
+            height: 230px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.85), rgba(246, 239, 230, 0.78));
+            border-radius: 20px;
+            border: 1.5px solid rgba(255, 255, 255, 0.95);
+            box-shadow:
+                0 24px 55px rgba(67, 48, 36, 0.16),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .envelope-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 65px rgba(168, 82, 54, 0.22);
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 125px;
+            background: linear-gradient(180deg, rgba(168, 82, 54, 0.14), rgba(197, 139, 50, 0.1));
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            border-bottom: 1px solid rgba(168, 82, 54, 0.25);
+            transform-origin: top;
+            transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2;
+        }
+
+        .envelope-box.opening .envelope-flap {
+            transform: rotateX(180deg);
+        }
+
+        .wax-seal {
+            position: relative;
+            z-index: 3;
+            width: 78px;
+            height: 78px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #C86B4B, #8E3E24);
+            border: 2px solid rgba(255, 245, 232, 0.7);
+            box-shadow:
+                0 10px 24px rgba(130, 59, 36, 0.38),
+                inset 0 2px 5px rgba(255, 255, 255, 0.35);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #FDFBF7;
+            animation: sealPulse 2.6s infinite ease-in-out;
+        }
+
+        @keyframes sealPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+        }
+
+        .wax-seal-initials {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+
+        .tap-hint {
+            margin-top: 1.25rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--terracotta-dark);
+        }
+
+        /* =========================================================
+           TARJETAS DE CRISTAL TRANSLÚCIDO Y REFLEJANTE
+        ========================================================= */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 560px;
+            margin: 0 auto;
+            padding: 2rem 1rem 5.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .glass-card {
+            position: relative;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.56) 0%,
+                rgba(255, 255, 255, 0.30) 52%,
+                rgba(253, 248, 241, 0.50) 100%
+            );
+            backdrop-filter: blur(16px) saturate(140%);
+            -webkit-backdrop-filter: blur(16px) saturate(140%);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            box-shadow:
+                0 16px 40px rgba(67, 48, 36, 0.08),
+                inset 0 1px 1px rgba(255, 255, 255, 0.96),
+                inset 0 -1px 1px rgba(168, 82, 54, 0.1);
+            padding: 2rem 1.5rem;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.75s ease, transform 0.75s ease;
+        }
+
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            top: -40%;
+            left: -25%;
+            width: 85%;
+            height: 85%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.48) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .glass-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================================
+           TIPOGRAFÍA Y COMPONENTES
+        ========================================================= */
+        .corner-wheat {
+            position: absolute;
+            width: 125px;
+            height: 125px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .corner-wheat.top-left {
+            top: -6px;
+            left: -6px;
+            color: rgba(197, 139, 50, 0.36);
+        }
+
+        .corner-wheat.bottom-right {
+            bottom: -6px;
+            right: -6px;
+            transform: rotate(180deg);
+            color: rgba(168, 82, 54, 0.28);
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 0.5rem;
+        }
+
+        .couple-names {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(2.6rem, 8vw, 3.6rem);
+            font-weight: 700;
+            color: var(--brown-deep);
+            line-height: 1.05;
+        }
+
+        .amp {
+            font-style: italic;
+            font-weight: 500;
+            color: var(--terracotta);
+            margin: 0 0.2rem;
+        }
+
+        .divider-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin: 1.25rem auto;
+            color: var(--honey-dark);
+        }
+
+        .divider-line {
+            height: 1px;
+            width: 55px;
+            background: linear-gradient(90deg, transparent, rgba(168, 82, 54, 0.45), transparent);
+        }
+
+        .verse-quote {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.28rem;
+            font-style: italic;
+            line-height: 1.45;
+            color: var(--brown-deep);
+            margin-top: 0.5rem;
+        }
+
+        .verse-ref {
+            display: block;
+            margin-top: 0.6rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-style: normal;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+        }
+
+        /* =========================================================
+           CUENTA REGRESIVA + CALENDARIO DICIEMBRE 2026
+        ========================================================= */
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.55rem;
+            margin: 1.25rem 0 1.75rem;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.54);
+            border: 1px solid rgba(255, 255, 255, 0.88);
+            border-radius: 18px;
+            padding: 0.85rem 0.25rem;
+            text-align: center;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .time-num {
+            display: block;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--terracotta-dark);
+            line-height: 1;
+        }
+
+        .time-lbl {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--brown-soft);
+            margin-top: 0.35rem;
+        }
+
+        .calendar-sheet {
+            background: rgba(255, 255, 255, 0.60);
+            border: 1px solid rgba(255, 255, 255, 0.92);
+            border-radius: 22px;
+            padding: 1.35rem 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .calendar-header {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: var(--brown-deep);
+            text-align: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .calendar-weekdays,
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            align-items: center;
+        }
+
+        .calendar-weekdays {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--terracotta);
+            padding-bottom: 0.55rem;
+            border-bottom: 1px solid rgba(168, 82, 54, 0.22);
+            margin-bottom: 0.5rem;
+        }
+
+        .calendar-days span {
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--brown);
+        }
+
+        .wedding-day-heart {
+            position: relative;
+            width: 38px;
+            height: 38px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+        }
+
+        .wedding-day-heart svg {
+            position: absolute;
+            inset: 0;
+            width: 38px;
+            height: 38px;
+            fill: var(--terracotta);
+            filter: drop-shadow(0 4px 8px rgba(168, 82, 54, 0.35));
+            z-index: 0;
+        }
+
+        .wedding-day-heart b {
+            position: relative;
+            z-index: 1;
+            font-size: 0.85rem;
+        }
+
+        .cal-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+
+        /* =========================================================
+           BOTONES
+        ========================================================= */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            background: linear-gradient(135deg, var(--terracotta), var(--terracotta-dark));
+            color: #FFFFFF;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 0.75rem 1.35rem;
+            border-radius: 999px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(168, 82, 54, 0.26);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 24px rgba(168, 82, 54, 0.34);
+        }
+
+        .btn-glass {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            background: rgba(255, 255, 255, 0.68);
+            color: var(--brown-deep);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.7rem 1.2rem;
+            border-radius: 999px;
+            text-decoration: none;
+            border: 1px solid rgba(168, 82, 54, 0.32);
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.92);
+        }
+
+        /* =========================================================
+           SEDE Y FOTO DEL HOTEL
+        ========================================================= */
+        .hotel-card {
+            padding: 0;
+        }
+
+        .hotel-photo-wrap {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #241913, #4B2E20);
+            overflow: hidden;
+        }
+
+        .hotel-photo-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hotel-photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(35, 22, 15, 0.82) 0%, rgba(35, 22, 15, 0.15) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.25rem;
+            text-align: center;
+            color: #FDFBF7;
+        }
+
+        .hotel-body {
+            padding: 1.65rem 1.4rem 1.85rem;
+            text-align: center;
+        }
+
+        .hotel-note {
+            margin-top: 1.15rem;
+            background: rgba(255, 255, 255, 0.54);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            border-radius: 18px;
+            padding: 0.9rem 1rem;
+            font-size: 0.8rem;
+            color: var(--brown);
+            text-align: left;
+            display: flex;
+            gap: 0.7rem;
+            align-items: flex-start;
+        }
+
+        /* =========================================================
+           TIMELINE INTERCALADO (ZIGZAG CENTRAL)
+        ========================================================= */
+        .timeline-wrap {
+            position: relative;
+            margin-top: 1.5rem;
+            padding: 0.5rem 0;
+        }
+
+        .timeline-axis {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            transform: translateX(-50%);
+            background: linear-gradient(180deg, transparent, var(--terracotta), var(--honey), transparent);
+        }
+
+        .timeline-row {
+            position: relative;
+            display: flex;
+            width: 100%;
+            margin-bottom: 1.35rem;
+        }
+
+        .timeline-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-row.left {
+            justify-content: flex-start;
+            padding-right: calc(50% + 16px);
+            text-align: right;
+        }
+
+        .timeline-row.right {
+            justify-content: flex-end;
+            padding-left: calc(50% + 16px);
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 14px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--terracotta);
+            border: 3px solid #FDFBF7;
+            box-shadow: 0 0 0 2px rgba(168, 82, 54, 0.35);
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .timeline-pill {
+            background: rgba(255, 255, 255, 0.60);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 0.75rem 0.9rem;
+            width: 100%;
+            box-shadow: 0 6px 16px rgba(67, 48, 36, 0.05);
+        }
+
+        .timeline-time {
+            display: block;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--terracotta-dark);
+            line-height: 1.1;
+        }
+
+        .timeline-title {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--brown-deep);
+            margin-top: 0.2rem;
+        }
+
+        .timeline-sub {
+            display: block;
+            font-size: 0.73rem;
+            color: var(--brown-soft);
+            margin-top: 0.15rem;
+        }
+
+        /* =========================================================
+           DRESS CODE & AVISO ADULTOS
+        ========================================================= */
+        .attire-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0 0.75rem;
+            color: var(--brown-deep);
+        }
+
+        .adults-badge {
+            margin-top: 1.25rem;
+            padding-top: 1.15rem;
+            border-top: 1px solid rgba(168, 82, 54, 0.2);
+            font-size: 0.82rem;
+            color: var(--brown);
+        }
+
+        /* =========================================================
+           FORMULARIO RSVP DOBLE (SHEETS + WHATSAPP)
+        ========================================================= */
+        .rsvp-deadline {
+            display: inline-block;
+            background: rgba(168, 82, 54, 0.12);
+            border: 1px solid rgba(168, 82, 54, 0.28);
+            color: var(--terracotta-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.45rem 0.95rem;
+            border-radius: 999px;
+            margin: 0.5rem 0 1.25rem;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--brown-deep);
+            margin-bottom: 0.4rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(168, 82, 54, 0.28);
+            border-radius: 14px;
+            padding: 0.72rem 0.9rem;
+            font-family: inherit;
+            font-size: 0.88rem;
+            color: var(--brown-deep);
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: var(--terracotta);
+        }
+
+        .radio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+        }
+
+        .radio-card {
+            cursor: pointer;
+        }
+
+        .radio-card input {
+            display: none;
+        }
+
+        .radio-card span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 46px;
+            padding: 0.5rem;
+            border-radius: 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.65);
+            border: 1.5px solid rgba(168, 82, 54, 0.25);
+            color: var(--brown);
+            transition: all 0.2s ease;
+        }
+
+        .radio-card input:checked + span {
+            background: var(--terracotta);
+            border-color: var(--terracotta);
+            color: #FFFFFF;
+            box-shadow: 0 6px 16px rgba(168, 82, 54, 0.25);
+        }
+
+        /* =========================================================
+           BOTÓN FLOTANTE DE MÚSICA
+        ========================================================= */
+        .music-pill {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            z-index: 40;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(43, 30, 22, 0.92);
+            backdrop-filter: blur(10px);
+            color: #FDFBF7;
+            border: 1px solid rgba(197, 139, 50, 0.45);
+            border-radius: 999px;
+            padding: 0.5rem 1rem 0.5rem 0.55rem;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+        }
+
+        .music-dot {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--terracotta);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+        }
+
+        .footer-close {
+            text-align: center;
+            padding: 0.75rem 1rem 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fondo líquido de ondas suaves -->
+    <canvas id="liquid-canvas"></canvas>
+
+    <!-- Audio de fondo (coloca cancion.mp3 en el mismo repositorio) -->
+    <audio id="bg-music" loop preload="none">
+        <source src="cancion.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- =================================================================
+         PANTALLA INICIAL: SOBRE INTERACTIVO
+    ================================================================== -->
+    <div id="envelope-screen">
+        <span class="eyebrow">Invitación Especial</span>
+        <h2 class="serif" style="font-size: 2.15rem; font-weight: 700; color: var(--brown-deep); margin-bottom: 1.2rem;">
+            Martín <span class="amp">&amp;</span> Edna
+        </h2>
+
+        <div id="envelope-box" class="envelope-box" onclick="openEnvelope()">
+            <div class="envelope-flap"></div>
+            <div class="wax-seal">
+                <span class="wax-seal-initials">M &amp; E</span>
+                <!-- Ichthys minimalista -->
+                <svg width="26" height="11" viewBox="0 0 40 16" fill="none" stroke="currentColor" stroke-width="1.8" style="margin-top: 2px;">
+                    <path d="M2 8 C11 1, 24 1, 37 13 M2 8 C11 15, 24 15, 37 3" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+
+        <p class="tap-hint">✦ Toca el sobre para abrir ✦</p>
+    </div>
+
+    <!-- =================================================================
+         CONTENIDO PRINCIPAL DE LA INVITACIÓN
+    ================================================================== -->
+    <main class="container">
+
+        <!-- 1. PORTADA Y VERSÍCULO BÍBLICO -->
+        <section class="glass-card" style="text-align: center;">
+            <!-- Ornamentos botánicos de espigas de trigo en esquinas -->
+            <svg class="corner-wheat top-left" viewBox="0 0 130 130" fill="none" stroke="currentColor" stroke-width="1.45">
+                <path d="M12 118 C38 82, 68 52, 108 18" stroke-linecap="round"/>
+                <path d="M22 104 C44 86, 66 68, 92 48" stroke-linecap="round" stroke-opacity="0.6"/>
+                <ellipse cx="44" cy="76" rx="5" ry="12" transform="rotate(-35 44 76)"/>
+                <ellipse cx="59" cy="61" rx="5" ry="12" transform="rotate(-35 59 61)"/>
+                <ellipse cx="74" cy="46" rx="5" ry="12" transform="rotate(-35 74 46)"/>
+                <ellipse cx="89" cy="31" rx="4.5" ry="10.5" transform="rotate(-35 89 31)"/>
+                <ellipse cx="55" cy="87" rx="5" ry="12" transform="rotate(24 55 87)"/>
+                <ellipse cx="70" cy="72" rx="5" ry="12" transform="rotate(24 70 72)"/>
+                <ellipse cx="85" cy="57" rx="5" ry="12" transform="rotate(24 85 57)"/>
+                <ellipse cx="99" cy="42" rx="4.5" ry="10.5" transform="rotate(24 99 42)"/>
+            </svg>
+
+            <svg class="corner-wheat bottom-right" viewBox="0 0 130 130" fill="none" stroke="currentColor" stroke-width="1.45">
+                <path d="M12 118 C38 82, 68 52, 108 18" stroke-linecap="round"/>
+                <path d="M22 104 C44 86, 66 68, 92 48" stroke-linecap="round" stroke-opacity="0.6"/>
+                <ellipse cx="44" cy="76" rx="5" ry="12" transform="rotate(-35 44 76)"/>
+                <ellipse cx="59" cy="61" rx="5" ry="12" transform="rotate(-35 59 61)"/>
+                <ellipse cx="74" cy="46" rx="5" ry="12" transform="rotate(-35 74 46)"/>
+                <ellipse cx="89" cy="31" rx="4.5" ry="10.5" transform="rotate(-35 89 31)"/>
+                <ellipse cx="55" cy="87" rx="5" ry="12" transform="rotate(24 55 87)"/>
+                <ellipse cx="70" cy="72" rx="5" ry="12" transform="rotate(24 70 72)"/>
+                <ellipse cx="85" cy="57" rx="5" ry="12" transform="rotate(24 85 57)"/>
+                <ellipse cx="99" cy="42" rx="4.5" ry="10.5" transform="rotate(24 99 42)"/>
+            </svg>
+
+            <div style="position: relative; z-index: 2;">
+                <span class="eyebrow">Nuestra Boda</span>
+                <h1 class="couple-names">Martín <span class="amp">&amp;</span> Edna</h1>
+                <p style="font-size: 0.88rem; font-weight: 600; color: var(--brown-soft); margin-top: 0.5rem;">
+                    Martes 22 de diciembre de 2026 · 5:00 PM
+                </p>
+
+                <div class="divider-ornament">
+                    <span class="divider-line"></span>
+                    <svg width="28" height="12" viewBox="0 0 40 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                        <path d="M2 8 C11 1, 24 1, 37 13 M2 8 C11 15, 24 15, 37 3" stroke-linecap="round"/>
+                    </svg>
+                    <span class="divider-line"></span>
+                </div>
+
+                <blockquote class="verse-quote">
+                    “Mejores son dos que uno; porque tienen mejor paga de su trabajo… y cordón de tres dobleces no se rompe pronto.”
+                    <span class="verse-ref">Eclesiastés 4:9, 12</span>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- 3. CEREMONIA Y RECEPCIÓN + HOSPEDAJE -->
+        <section class="glass-card hotel-card">
+            <div class="hotel-photo-wrap">
+                <img src="FOTOHOTEL.jpg" alt="Hotel Comfort Inn Querétaro Tecnológico" onerror="this.style.display='none'">
+                <div class="hotel-photo-overlay">
+                    <span style="font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: #F5DEC0; font-weight: 700;">
+                        Ceremonia &amp; Recepción · 5:00 PM
+                    </span>
+                    <h2 class="serif" style="font-size: 1.75rem; font-weight: 700; margin-top: 0.2rem;">
+                        Comfort Inn Querétaro Tecnológico
+                    </h2>
+                </div>
+            </div>
+
+            <div class="hotel-body">
+                <p style="font-size: 0.85rem; color: var(--brown-soft); margin-bottom: 1.1rem;">
+                    Av. Tecnológico Norte · Santiago de Querétaro, Qro.<br>
+                    <strong style="color: var(--brown-deep);">Ceremonia y recepción en el mismo lugar</strong>
+                </p>
+
+                <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Comfort+Inn+Queretaro+Tecnologico" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                    📍 Ver ubicación en Google Maps
+                </a>
+
+                <div class="hotel-note">
+                    <span style="font-size: 1.15rem;">🏨</span>
+                    <div>
+                        <strong style="color: var(--terracotta-dark); display: block; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em;">
+                            Opción de hospedaje
+                        </strong>
+                        Si vienes de fuera o deseas descansar después de la celebración, puedes hospedarte en el <strong>Hotel Comfort Inn Querétaro Tecnológico</strong> si lo necesitas.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3B. CUENTA REGRESIVA Y CALENDARIO DE DICIEMBRE 2026 -->
+        <section class="glass-card" style="text-align: center;">
+            <span class="eyebrow">Faltan tan solo</span>
+            <h2 class="serif" style="font-size: 1.9rem; font-weight: 700; color: var(--brown-deep);">
+                Para nuestro gran día
+            </h2>
+
+            <div class="countdown-grid">
+                <div class="time-box">
+                    <span id="cd-days" class="time-num">00</span>
+                    <span class="time-lbl">Días</span>
+                </div>
+                <div class="time-box">
+                    <span id="cd-hours" class="time-num">00</span>
+                    <span class="time-lbl">Horas</span>
+                </div>
+                <div class="time-box">
+                    <span id="cd-mins" class="time-num">00</span>
+                    <span class="time-lbl">Min</span>
+                </div>
+                <div class="time-box">
+                    <span id="cd-secs" class="time-num">00</span>
+                    <span class="time-lbl">Seg</span>
+                </div>
+            </div>
+
+            <!-- Hoja de Calendario Diciembre 2026 -->
+            <div class="calendar-sheet">
+                <div class="calendar-header">Diciembre 2026</div>
+                <div class="calendar-weekdays">
+                    <span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sá</span><span>Do</span>
+                </div>
+                <div class="calendar-days">
+                    <!-- 1 de diciembre de 2026 cae en Martes -->
+                    <span></span>
+                    <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+                    <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
+                    <span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+                    <span>21</span>
+                    <span class="wedding-day-heart" aria-label="22 de diciembre">
+                        <svg viewBox="0 0 36 34">
+                            <path d="M18 32.5C18 32.5 2 22.2 2 11.2C2 6.1 6 2 10.9 2C13.8 2 16.4 3.4 18 5.6C19.6 3.4 22.2 2 25.1 2C30 2 34 6.1 34 11.2C34 22.2 18 32.5 18 32.5Z"/>
+                        </svg>
+                        <b>22</b>
+                    </span>
+                    <span>23</span><span>24</span><span>25</span><span>26</span><span>27</span>
+                    <span>28</span><span>29</span><span>30</span><span>31</span>
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <div class="cal-actions">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Mart%C3%ADn+%26+Edna&dates=20261222T230000Z/20261223T050000Z&details=Celebraci%C3%B3n+de+la+boda+de+Mart%C3%ADn+y+Edna.+C%C3%B3digo+de+vestimenta%3A+Formal.+Evento+solo+para+adultos.&location=Hotel+Comfort+Inn+Quer%C3%A9taro+Tecnol%C3%B3gico" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                    📅 Añadir a Google Calendar
+                </a>
+            </div>
+        </section>
+
+        <!-- 4. ITINERARIO INTERCALADO (ZIGZAG) -->
+        <section class="glass-card">
+            <div style="text-align: center;">
+                <span class="eyebrow">Momentos Especiales</span>
+                <h2 class="serif" style="font-size: 1.95rem; font-weight: 700; color: var(--brown-deep);">
+                    Itinerario del Día
+                </h2>
+            </div>
+
+            <div class="timeline-wrap">
+                <div class="timeline-axis"></div>
+
+                <div class="timeline-row left">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-pill">
+                        <span class="timeline-time">5:00 PM</span>
+                        <span class="timeline-title">Recepción</span>
+                        <span class="timeline-sub">Bienvenida de invitados</span>
+                    </div>
+                </div>
+
+                <div class="timeline-row right">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-pill">
+                        <span class="timeline-time">5:30 PM</span>
+                        <span class="timeline-title">Ceremonia</span>
+                        <span class="timeline-sub">Bendición y votos · Oficiada por el Pastor Wilfrido</span>
+                    </div>
+                </div>
+
+                <div class="timeline-row left">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-pill">
+                        <span class="timeline-time">7:10 PM</span>
+                        <span class="timeline-title">Entrada y Brindis</span>
+                        <span class="timeline-sub">Palabras y celebración</span>
+                    </div>
+                </div>
+
+                <div class="timeline-row right">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-pill">
+                        <span class="timeline-time">7:30 PM</span>
+                        <span class="timeline-title">Cena</span>
+                        <span class="timeline-sub">Banquete y convivencia</span>
+                    </div>
+                </div>
+
+                <div class="timeline-row left">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-pill">
+                        <span class="timeline-time">9:00 PM</span>
+                        <span class="timeline-title">Vals y Baile</span>
+                        <span class="timeline-sub">Apertura de pista</span>
+                    </div>
+                </div>
+
+                <div class="timeline-row right">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-pill">
+                        <span class="timeline-time">10:30 PM</span>
+                        <span class="timeline-title">Cierre</span>
+                        <span class="timeline-sub">Despedida del evento</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CÓDIGO DE VESTIMENTA Y AVISO -->
+        <section class="glass-card" style="text-align: center;">
+            <span class="eyebrow">Etiqueta</span>
+            <h2 class="serif" style="font-size: 1.95rem; font-weight: 700; color: var(--brown-deep);">
+                Código de Vestimenta
+            </h2>
+
+            <!-- Íconos minimalistas de Traje y Vestido largo -->
+            <div class="attire-icons">
+                <svg width="46" height="58" viewBox="0 0 48 64" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M16 8 L24 18 L32 8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16 8 L8 14 L6 36 L12 37 L14 22 V58 H23 V34 H25 V58 H34 V22 L36 37 L42 36 L40 14 L32 8" stroke-linejoin="round"/>
+                    <path d="M24 18 V28" stroke-linecap="round"/>
+                </svg>
+                <svg width="46" height="58" viewBox="0 0 48 64" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M18 10 L21 22 H27 L30 10" stroke-linejoin="round"/>
+                    <path d="M18 10 C19 14, 29 14, 30 10" stroke-linecap="round"/>
+                    <path d="M21 22 L11 58 H37 L27 22" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <p class="serif" style="font-size: 1.65rem; font-weight: 700; color: var(--terracotta-dark);">
+                Formal
+            </p>
+
+            <div class="adults-badge">
+                <strong>Evento solo para adultos</strong><br>
+                <span style="color: var(--brown-soft); font-size: 0.78rem;">Agradecemos su comprensión al celebrar esta velada sin niños.</span>
+            </div>
+        </section>
+
+        <!-- 5B. AGRADECIMIENTO ESPECIAL A NUESTROS PADRES -->
+        <section class="glass-card" style="text-align: center;">
+            <span class="eyebrow">Con gratitud y amor</span>
+            <h2 class="serif" style="font-size: 1.95rem; font-weight: 700; color: var(--brown-deep);">
+                Agradecimiento Especial a Nuestros Padres
+            </h2>
+
+            <div class="divider-ornament" style="margin: 0.9rem auto;">
+                <span class="divider-line"></span>
+                <svg width="24" height="10" viewBox="0 0 40 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M2 8 C11 1, 24 1, 37 13 M2 8 C11 15, 24 15, 37 3" stroke-linecap="round"/>
+                </svg>
+                <span class="divider-line"></span>
+            </div>
+
+            <div style="space-y: 0.45rem; margin-top: 0.5rem;">
+                <p class="serif" style="font-size: 1.45rem; font-weight: 700; color: var(--terracotta-dark); line-height: 1.3;">
+                    Dr. Edgar Cabrera
+                </p>
+                <p class="serif" style="font-size: 1.45rem; font-weight: 700; color: var(--terracotta-dark); line-height: 1.3; margin-top: 0.25rem;">
+                    Dra. Ma. Teresa González
+                </p>
+            </div>
+
+            <p style="font-size: 0.82rem; color: var(--brown-soft); margin-top: 0.85rem;">
+                Por su ejemplo, amor incondicional y bendición en este nuevo camino que comenzamos juntos.
+            </p>
+        </section>
+
+        <!-- 6. FORMULARIO RSVP DOBLE (GOOGLE SHEETS + WHATSAPP) -->
+        <section class="glass-card" style="text-align: center;">
+            <span class="eyebrow">Confirma tu lugar</span>
+            <h2 class="serif" style="font-size: 1.95rem; font-weight: 700; color: var(--brown-deep);">
+                Asistencia
+            </h2>
+            <div class="rsvp-deadline">
+                ⏳ Por favor confirma antes del 26 de noviembre
+            </div>
+
+            <form id="rsvp-form" onsubmit="handleRSVPSubmit(event)">
+                <div class="form-group">
+                    <label class="form-label" for="rsvp-name">Tu nombre completo *</label>
+                    <input type="text" id="rsvp-name" class="form-input" required placeholder="Ej. Ana García">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">¿Nos acompañas? *</label>
+                    <div class="radio-grid">
+                        <label class="radio-card">
+                            <input type="radio" name="attendance" value="si" checked>
+                            <span>✓ Sí, ahí estaré</span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="attendance" value="no">
+                            <span>No podré asistir</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="rsvp-message">Déjanos un mensaje para los novios (opcional)</label>
+                    <textarea id="rsvp-message" rows="2" class="form-textarea" placeholder="Escribe tus buenos deseos para Martín y Edna..."></textarea>
+                </div>
+
+                <button type="submit" id="rsvp-submit-btn" class="btn-primary" style="width: 100%; padding: 0.9rem; font-size: 0.88rem;">
+                    Confirmar y enviar por WhatsApp
+                </button>
+            </form>
+        </section>
+
+        <!-- CIERRE -->
+        <footer class="footer-close">
+            <p class="serif" style="font-size: 1.55rem; font-weight: 700; color: var(--brown-deep);">
+                Martín <span class="amp">&amp;</span> Edna
+            </p>
+            <p style="font-size: 0.88rem; font-weight: 500; color: var(--terracotta-dark); margin-top: 0.2rem;">
+                Los esperamos con mucho amor
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- Botón flotante de música -->
+    <button type="button" class="music-pill" onclick="toggleMusic()">
+        <span id="music-icon" class="music-dot">▶</span>
+        <div style="text-align: left;">
+            <span style="display: block; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: #E7C38B; font-weight: 700;">Nuestra canción</span>
+            <span style="display: block; font-size: 0.74rem; font-weight: 600;">You and I · M. Bublé</span>
+        </div>
+    </button>
+
+    <script>
+        // =================================================================
+        // CONFIGURACIÓN DE WHATSAPP
+        // =================================================================
+        const WHATSAPP_NUMBER = "525527292756";
+
+        // =================================================================
+        // 1. FONDO ANIMADO DE ONDAS SUAVES (LIMPIO, SIN CÍRCULOS NI LÍNEAS)
+        // =================================================================
+        const canvas = document.getElementById("liquid-canvas");
+        const ctx = canvas.getContext("2d");
+        let width, height, phase = 0;
+
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+
+        const waveLayers = [
+            { yRatio: 0.16, amp: 34, freq: 0.0026, speed: 0.011, offset: 0.0, color: "rgba(197, 139, 50, 0.14)" },
+            { yRatio: 0.34, amp: 42, freq: 0.0021, speed: -0.009, offset: 1.7, color: "rgba(168, 82, 54, 0.12)" },
+            { yRatio: 0.54, amp: 38, freq: 0.0028, speed: 0.012, offset: 3.1, color: "rgba(218, 179, 128, 0.18)" },
+            { yRatio: 0.72, amp: 44, freq: 0.0020, speed: -0.008, offset: 4.5, color: "rgba(168, 82, 54, 0.11)" },
+            { yRatio: 0.88, amp: 30, freq: 0.0025, speed: 0.010, offset: 2.3, color: "rgba(197, 139, 50, 0.15)" }
+        ];
+
+        function drawLiquidWaves() {
+            ctx.clearRect(0, 0, width, height);
+
+            const baseGrad = ctx.createLinearGradient(0, 0, width, height);
+            baseGrad.addColorStop(0, "#FDFBF7");
+            baseGrad.addColorStop(0.5, "#F6ECE0");
+            baseGrad.addColorStop(1, "#F2E2D0");
+            ctx.fillStyle = baseGrad;
+            ctx.fillRect(0, 0, width, height);
+
+            waveLayers.forEach(layer => {
+                ctx.beginPath();
+                const baseY = height * layer.yRatio;
+                ctx.moveTo(0, height);
+                ctx.lineTo(0, baseY);
+
+                for (let x = 0; x <= width + 20; x += 18) {
+                    const y = baseY
+                        + Math.sin(x * layer.freq + phase * layer.speed * 60 + layer.offset) * layer.amp
+                        + Math.cos(x * layer.freq * 0.55 - phase * layer.speed * 40) * (layer.amp * 0.45);
+                    ctx.lineTo(x, y);
+                }
+
+                ctx.lineTo(width, height);
+                ctx.closePath();
+                ctx.fillStyle = layer.color;
+                ctx.fill();
+            });
+
+            phase += 0.016;
+            requestAnimationFrame(drawLiquidWaves);
+        }
+        drawLiquidWaves();
+
+        // =================================================================
+        // 2. SOBRE INTERACTIVO Y MÚSICA
+        // =================================================================
+        const audio = document.getElementById("bg-music");
+        const musicIcon = document.getElementById("music-icon");
+        let isPlaying = false;
+
+        function openEnvelope() {
+            const box = document.getElementById("envelope-box");
+            const screen = document.getElementById("envelope-screen");
+            box.classList.add("opening");
+
+            if (audio) {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    musicIcon.textContent = "❚❚";
+                }).catch(() => {});
+            }
+
+            setTimeout(() => {
+                screen.classList.add("opened");
+                revealCards();
+            }, 520);
+        }
+
+        function toggleMusic() {
+            if (!audio) return;
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                musicIcon.textContent = "▶";
+            } else {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    musicIcon.textContent = "❚❚";
+                }).catch(() => {});
+            }
+        }
+
+        // =================================================================
+        // 3. ANIMACIÓN DE ENTRADA AL HACER SCROLL
+        // =================================================================
+        function revealCards() {
+            const cards = document.querySelectorAll(".glass-card");
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => observer.observe(card));
+        }
+
+        // =================================================================
+        // 4. CUENTA REGRESIVA (22 DE DICIEMBRE DE 2026 · 5:00 PM)
+        // =================================================================
+        const weddingTarget = new Date("2026-12-22T17:00:00-06:00").getTime();
+
+        function updateCountdown() {
+            const now = Date.now();
+            const diff = Math.max(0, weddingTarget - now);
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / (1000 * 60)) % 60);
+            const secs = Math.floor((diff / 1000) % 60);
+
+            document.getElementById("cd-days").textContent = String(days).padStart(2, "0");
+            document.getElementById("cd-hours").textContent = String(hours).padStart(2, "0");
+            document.getElementById("cd-mins").textContent = String(mins).padStart(2, "0");
+            document.getElementById("cd-secs").textContent = String(secs).padStart(2, "0");
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // =================================================================
+        // 5. FORMULARIO RSVP (DIRECTO A WHATSAPP)
+        // =================================================================
+        function handleRSVPSubmit(e) {
+            e.preventDefault();
+            const nombre = document.getElementById("rsvp-name").value.trim();
+            const isAttending = document.querySelector('input[name="attendance"]:checked').value === "si";
+            const mensaje = document.getElementById("rsvp-message").value.trim();
+
+            if (!nombre) return;
+
+            let waText = "";
+            if (isAttending) {
+                waText = `Hola, soy *${nombre}*. ¡Con mucho gusto confirmo mi asistencia a la boda de *Martín & Edna* el 22 de diciembre! 💍✨\n\n` +
+                         `• *Asistente:* ${nombre}\n` +
+                         (mensaje ? `• *Mensaje:* "${mensaje}"` : "");
+            } else {
+                waText = `Hola, soy *${nombre}*. Muchas gracias por la invitación a la boda de *Martín & Edna*. Lamentablemente en esta ocasión no podré asistir, pero les deseo toda la felicidad del mundo. 🤍✨` +
+                         (mensaje ? `\n\n• *Mensaje:* "${mensaje}"` : "");
+            }
+
+            const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`;
+            window.open(waUrl, "_blank");
+        }
+    </script>
+</body>
+</html>
